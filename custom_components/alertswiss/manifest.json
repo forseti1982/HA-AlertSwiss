@@ -1,13 +1,13 @@
 {
   "domain": "alertswiss",
   "name": "AlertSwiss",
-  "version": "1.0.0",
-  "documentation": "https://github.com/forseti1982/HA-AlertSwiss",
-  "issue_tracker": "https://github.com/forseti1982/HA-AlertSwiss/issues",
   "codeowners": ["@forseti1982"],
-  "dependencies": [],
-  "requirements": [],
-  "iot_class": "cloud_polling",
   "config_flow": true,
-  "integration_type": "service"
+  "dependencies": [],
+  "documentation": "https://github.com/forseti1982/HA-AlertSwiss",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/forseti1982/HA-AlertSwiss/issues",
+  "requirements": [],
+  "version": "1.0.0"
 }
