@@ -37,13 +37,14 @@ def _clean(alert: dict) -> dict:
 class AlertSwissCoordinator(DataUpdateCoordinator):
     """Fetches and filters AlertSwiss alerts."""
 
-    def __init__(self, hass: HomeAssistant, kanton: str = "", include_nationwide: bool = True) -> None:
+    def __init__(self, hass: HomeAssistant, cantons: list[str] | None = None, include_nationwide: bool = True) -> None:
         super().__init__(hass, _LOGGER, name="AlertSwiss", update_interval=SCAN_INTERVAL)
-        self._kanton = (kanton or "").strip().lower()
+        self._cantons = [c.strip().lower() for c in (cantons or []) if c and c.strip()]
         self._include_nationwide = include_nationwide
 
     def _matches(self, alert: dict) -> bool:
-        if not self._kanton:
+        # No cantons selected -> whole of Switzerland.
+        if not self._cantons:
             return True
         if self._include_nationwide and alert.get("nationwide"):
             return True
@@ -51,7 +52,7 @@ class AlertSwissCoordinator(DataUpdateCoordinator):
             [str(alert.get("publisher") or "")]
             + [str(a) for a in (alert.get("areas") or [])]
         ).lower()
-        return self._kanton in hay
+        return any(c in hay for c in self._cantons)
 
     async def _async_update_data(self):
         session = async_get_clientsession(self.hass)

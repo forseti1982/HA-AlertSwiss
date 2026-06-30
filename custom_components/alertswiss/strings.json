@@ -3,10 +3,10 @@
     "step": {
       "user": {
         "title": "AlertSwiss",
-        "description": "Offizielle Schweizer Behörden-Warnungen (PolyAlert/BABS). Optional auf einen Kanton/ein Gebiet filtern.",
+        "description": "Offizielle Schweizer Behörden-Warnungen (PolyAlert/BABS). Wähle die Kantone, die Dich alarmieren sollen — keine Auswahl = ganze Schweiz.",
         "data": {
-          "kanton": "Kanton/Gebiet-Filter (leer = ganze Schweiz, z. B. 'Zürich')",
-          "include_nationwide": "Landesweite Meldungen immer anzeigen"
+          "cantons": "Kantone (mehrere möglich)",
+          "include_nationwide": "Landesweite Meldungen immer einbeziehen"
         }
       }
     }
@@ -15,8 +15,8 @@
     "step": {
       "init": {
         "data": {
-          "kanton": "Kanton/Gebiet-Filter (leer = ganze Schweiz)",
-          "include_nationwide": "Landesweite Meldungen immer anzeigen"
+          "cantons": "Kantone (mehrere möglich)",
+          "include_nationwide": "Landesweite Meldungen immer einbeziehen"
         }
       }
     }

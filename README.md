@@ -104,8 +104,8 @@ content: |
 
 | Option | Default | Description |
 |---|---|---|
-| **Canton / area filter** | _(empty)_ | Only show alerts whose publisher/area matches this text (e.g. `Zürich`). Empty = whole country |
-| **Always include nationwide** | `true` | Keep country-wide alerts even when a canton filter is set |
+| **Cantons** | _(none)_ | Multi-select of the 26 Swiss cantons. Only alerts for the **selected cantons** count (so a hazard in e.g. _Zürich_ actively triggers your sensor/automation). No selection = whole country |
+| **Always include nationwide** | `true` | Keep country-wide alerts even when specific cantons are selected |
 
 ## ⚠️ Disclaimer
 
