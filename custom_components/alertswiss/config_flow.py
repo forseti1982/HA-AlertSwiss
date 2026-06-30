@@ -11,7 +11,14 @@ from homeassistant.helpers.selector import (
     SelectSelectorMode,
 )
 
-from .const import CANTONS, CONF_CANTONS, CONF_INCLUDE_NATIONWIDE, DOMAIN
+from .const import (
+    CANTONS,
+    CONF_CANTONS,
+    CONF_INCLUDE_NATIONWIDE,
+    CONF_LEVELS,
+    DOMAIN,
+    LEVELS,
+)
 
 
 def _schema(defaults: dict) -> vol.Schema:
@@ -19,11 +26,13 @@ def _schema(defaults: dict) -> vol.Schema:
         {
             vol.Optional(CONF_CANTONS, default=defaults.get(CONF_CANTONS, [])): SelectSelector(
                 SelectSelectorConfig(
-                    options=CANTONS,
-                    multiple=True,
-                    mode=SelectSelectorMode.DROPDOWN,
-                    custom_value=False,
-                    sort=True,
+                    options=CANTONS, multiple=True, mode=SelectSelectorMode.DROPDOWN,
+                    custom_value=False, sort=True,
+                )
+            ),
+            vol.Optional(CONF_LEVELS, default=defaults.get(CONF_LEVELS, LEVELS)): SelectSelector(
+                SelectSelectorConfig(
+                    options=LEVELS, multiple=True, mode=SelectSelectorMode.LIST,
                 )
             ),
             vol.Optional(

@@ -14,6 +14,16 @@ SCAN_INTERVAL = timedelta(minutes=2)
 CONF_CANTONS = "cantons"
 CONF_KANTON = "kanton"  # legacy (single free-text), kept for backward compatibility
 CONF_INCLUDE_NATIONWIDE = "include_nationwide"
+CONF_LEVELS = "levels"
+
+# Meldestufen (UI) <- alert.swiss severity
+LEVELS = ["Alarm", "Warnung", "Info"]
+SEVERITY_TO_LEVEL = {
+    "extreme": "Alarm",
+    "severe": "Alarm",
+    "moderate": "Warnung",
+    "minor": "Info",
+}
 
 # 26 Schweizer Kantone (Namen wie auf alert.swiss / publisherName "Kanton …")
 CANTONS = [

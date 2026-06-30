@@ -34,9 +34,15 @@ class AlertSwissSensor(CoordinatorEntity, SensorEntity):
     def extra_state_attributes(self) -> dict:
         alerts = self.coordinator.data.get("alerts", [])
         sev = max((SEVERITY_ORDER.get(a.get("severity"), 0) for a in alerts), default=0)
+        by_level = {"Alarm": 0, "Warnung": 0, "Info": 0}
+        for a in alerts:
+            by_level[a.get("level", "Info")] = by_level.get(a.get("level", "Info"), 0) + 1
+        max_level = "Alarm" if by_level["Alarm"] else "Warnung" if by_level["Warnung"] else "Info" if by_level["Info"] else None
         return {
             "alerts": alerts,
             "titles": [a["title"] for a in alerts],
             "max_severity": _SEV_NAME.get(sev),
+            "max_level": max_level,
+            "by_level": by_level,
             "render_time": self.coordinator.data.get("render_time"),
         }
