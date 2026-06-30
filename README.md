@@ -117,3 +117,5 @@ Alert data © [BABS / alert.swiss](https://www.alert.swiss). Always follow offic
 Made with 🧡 in Switzerland · powered by Home Assistant
 
 </div>
+
+<!-- v1.0.0 -->
